@@ -1,0 +1,97 @@
+import React, { useState } from "react";
+import Card from "@mui/material/Card";
+import { Box, Button, TextField, Typography } from "@mui/material";
+import { useCookies } from "react-cookie";
+import { useUserStore } from "../../../store";
+import { signInApi } from "../../../api";
+import { useNavigate } from "react-router-dom";
+
+import { useDispatch } from "react-redux";
+import { loginUser } from "../../../_actions/user_action";
+
+export default function SignIn(props) {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [cookies, setCookies] = useCookies();
+  const { setUser } = useUserStore();
+  const dispatch = useDispatch();
+
+  const { setAuthView } = props;
+  const navigate = useNavigate();
+
+  const handleLoginClick = () => {
+    // Redirect to the signup page
+    navigate("/register");
+  };
+
+  const signInHandler = async (e) => {
+    e.preventDefault(); // 폼 제출 시 페이지 새로고침 방지
+
+    if (email.length === 0 || password.length === 0) {
+      alert("이메일과 비밀번호를 입력하세요.");
+      return;
+    }
+
+    const data = {
+      email,
+      password,
+    };
+    // dispatch(loginUser(data)).then((res) => {
+    //   console.log(res);
+    //   localStorage.setItem("user", JSON.stringify(res));
+    // });
+
+    try {
+      const signInResponse = await signInApi(data);
+
+      if (!signInResponse) {
+        alert("로그인에 실패했습니다.");
+        return;
+      }
+
+      if (signInResponse.result) {
+        console.log(signInResponse);
+        const { user1 } = signInResponse;
+
+        // 로그인 성공 메시지를 표시하거나 다른 동작을 수행할 수 있습니다.
+        navigate("/list"); // Redirect to the home page
+      } else {
+        alert("로그인에 실패했습니다.");
+        console.log(signInResponse);
+      }
+
+      const { token, exprTime, user } = signInResponse.data;
+      const expires = new Date();
+      expires.setMilliseconds(expires.getMilliseconds() + exprTime);
+
+      // 토큰을 로컬 스토리지에 저장
+      // localStorage.setItem("token", token);
+      // sessionStorage.setItem("token", token);
+
+      setCookies("token", token, { expires });
+      setUser(user);
+    } catch (error) {
+      console.error(error);
+      alert("로그인 중 오류가 발생했습니다.");
+    }
+  };
+
+  return (
+    <div className="Wrap">
+      <div className="form-wrapper">
+        <h2>로그인</h2>
+        <form id="login-form" onSubmit={signInHandler}>
+          <input type="text" name="userName" placeholder="Email" onChange={(e) => setEmail(e.target.value)} value={email} />
+          <input type="password" name="userPassword" placeholder="Password" onChange={(e) => setPassword(e.target.value)} value={password} />
+          <p>
+            오영추는 처음이신가요?
+            <a onClick={handleLoginClick}>회원가입</a>
+          </p>
+          <button type="submit" value="Login">
+            Login
+          </button>
+        </form>
+      </div>
+    </div>
+  );
+}
