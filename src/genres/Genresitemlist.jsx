@@ -1,33 +1,40 @@
-import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect, useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Auth from "../hoc/auth";
+import { click } from "../_actions/click_action";
 
 const Genresitemlist = (props) => {
   const { list } = props;
   const nav = useNavigate();
-  const user = useSelector((state) => state.user);
+  // const user = useSelector((state) => state.user);
   const [Load, setLoad] = useState(true);
   console.log(list);
+  const dispatch = useDispatch();
+
+  const clicks = useSelector((state) => state.user.clickdata);
 
   useEffect(() => {
-    const loadImage = new Image();
-    loadImage.src = list.poster_path;
-    loadImage.onload = () => {
-      // 이미지가 로드된 후에 할 일
-      setLoad(false); // 로딩 완료 상태로 변경
-    };
+    if (clicks !== undefined) {
+      window.scrollTo(0, clicks);
+      console.log(clicks);
+    }
   }, []);
+  //  페이지로 왔을 때 저장된 커서 위치로 이동
 
   return (
-    <div className="listWrap webSize">
+    <div className="listWrap webSize" id="listPage">
       <ul class="listBox">
         {list.map((item, index) => {
           return (
             <li
               class="item"
               key={index}
-              onClick={() => {
+              onClick={(event) => {
+                event.preventDefault();
+
+                dispatch(click(window.scrollY));
+
                 nav(`/detail/${item.movie_id}`);
               }}
             >

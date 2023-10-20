@@ -3,6 +3,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { Alert } from "react-bootstrap";
 
 export default function NicknameChange(props) {
   const [nickname, setNickname] = useState("");
@@ -34,7 +35,7 @@ export default function NicknameChange(props) {
       const responseMessage = response.data.message;
 
       if (responseMessage === "Invalid Nickname Pattern") {
-        setMessage("한글로 1글자 이상 9글자 미만으로 입력해주세요.");
+        setMessage("1글자 이상 9글자 미만으로 입력해주세요.");
       } else if (responseMessage === "Nickname already in use") {
         setMessage("이미 존재하는 닉네임입니다.");
       } else if (responseMessage === "Success") {
@@ -49,17 +50,28 @@ export default function NicknameChange(props) {
 
   return (
     <div>
-      <h1>닉네임 변경</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="nickname">닉네임</label>
-          <input type="text" id="nickname" value={nickname} onChange={handleNicknameChange} />
+      <div className="head">
+        <div className="header">
+          <img src="/image/logo2.png" alt="로고" />
         </div>
-        <Button variant="contained" type="submit">
-          변경
-        </Button>
-      </form>
-      <p>{message}</p>
+      </div>
+      <div className="passBoxW">
+        <div className="passBox">
+          <h3>닉네임 변경</h3>
+          <form onSubmit={handleSubmit}>
+            <input className="marB_5" type="nickname" placeholder="변경할 닉네임" value={nickname} onChange={handleNicknameChange} />
+            {message && <p className="error-message">{message}</p>}
+            <button class="marB_10">변경</button>
+            <button
+              onClick={() => {
+                navigate("/mypage");
+              }}
+            >
+              이전
+            </button>
+          </form>
+        </div>
+      </div>
     </div>
   );
 }

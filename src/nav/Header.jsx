@@ -9,7 +9,9 @@ import Cookies from "js-cookie";
 
 import Search from "./Search";
 import Auth from "../hoc/auth";
-import { useSelector } from "react-redux";
+
+import { useDispatch, useSelector } from "react-redux";
+import { click } from "../_actions/click_action";
 // import { get } from "http";
 
 function Header() {
@@ -17,17 +19,18 @@ function Header() {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
 
   const [nickname, setNickname] = useState("");
+  const dispath = useDispatch();
   const [role, setRole] = useState(null);
   const nav = useNavigate();
 
   const toggle = () => setDropdownOpen((prevState) => !prevState);
-  const navigate = useNavigate();
 
   const user = useSelector((state) => state.user);
 
   useEffect(() => {
     console.log(Cookies.get("token"));
     const token = Cookies.get("token"); // 수정: get 메서드 사용
+
     // console.log("쿠키에 설정된 토큰:", token);
 
     if (token !== undefined) {
@@ -43,19 +46,19 @@ function Header() {
   }, [user]);
 
   const handleLoginClick = () => {
-    navigate("/login");
+    nav("/login");
   };
 
-  const handleLogout = () => {
-    // 로그아웃 로직을 처리하고 토큰값을 제거합니다.
-    // localStorage.removeItem("token");
+  const handleLogout = (event) => {
     console.log(Cookies.get("token"));
-    // Cookies.set("token", undefined);
+    Cookies.remove("token");
+    event.preventDefault();
+
     document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
-    // sessionStorage.removeItem("token");
+    window.location.reload();
+    //캐시
 
     setIsLoggedIn(false);
-    window.location.reload();
   };
 
   return (
@@ -100,6 +103,7 @@ function Header() {
                       </DropdownItem>
                     )}
                     <DropdownItem onClick={handleLogout}>로그아웃</DropdownItem>
+                    <DropdownItem>{nickname}</DropdownItem>
                   </DropdownMenu>
                 </Dropdown>
               )}
@@ -113,13 +117,22 @@ function Header() {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav" className="center-collapse">
             <Nav className="center">
-              <Nav.Link>
+              <Nav.Link
+                onClick={(event) => {
+                  event.preventDefault();
+                  dispath(click(window.scrollY));
+
+                  nav("/list");
+                }}
+              >
                 <FontAwesomeIcon icon={faThumbsUp} activeClassName="onActive" />
                 오영추
               </Nav.Link>
               <Nav.Link
-                onClick={() => {
+                onClick={(event) => {
                   const a = "액션";
+                  event.preventDefault();
+                  dispath(click(window.scrollY));
                   nav(`/movies/list/${a}`);
                 }}
               >
@@ -127,8 +140,11 @@ function Header() {
                 액션
               </Nav.Link>
               <Nav.Link
-                onClick={() => {
+                onClick={(event) => {
                   const a = "애니메이션";
+                  event.preventDefault();
+                  dispath(click(window.scrollY));
+
                   nav(`/movies/list/${a}`);
                 }}
               >
@@ -136,8 +152,11 @@ function Header() {
                 애니메이션
               </Nav.Link>
               <Nav.Link
-                onClick={() => {
+                onClick={(event) => {
                   const a = "공포 스릴러";
+                  event.preventDefault();
+                  dispath(click(window.scrollY));
+
                   nav(`/movies/list/${a}`);
                 }}
               >
@@ -145,8 +164,11 @@ function Header() {
                 공포|스릴러
               </Nav.Link>
               <Nav.Link
-                onClick={() => {
+                onClick={(event) => {
                   const a = "범죄";
+                  event.preventDefault();
+                  dispath(click(window.scrollY));
+
                   nav(`/movies/list/${a}`);
                 }}
               >
@@ -154,8 +176,12 @@ function Header() {
                 범죄
               </Nav.Link>
               <Nav.Link
-                onClick={() => {
+                onClick={(event) => {
                   const a = "코미디";
+                  event.preventDefault();
+                  dispath(click(window.scrollY));
+                  nav(`/movies/list/${a}`);
+
                   nav(`/movies/list/${a}`);
                 }}
               >
@@ -163,8 +189,11 @@ function Header() {
                 코미디
               </Nav.Link>
               <Nav.Link
-                onClick={() => {
+                onClick={(event) => {
                   const a = "로맨스";
+                  event.preventDefault();
+                  dispath(click(window.scrollY));
+                  nav(`/movies/list/${a}`);
                   nav(`/movies/list/${a}`);
                 }}
               >
@@ -172,8 +201,11 @@ function Header() {
                 로맨스
               </Nav.Link>
               <Nav.Link
-                onClick={() => {
+                onClick={(event) => {
                   const a = "멜로 드라마";
+                  event.preventDefault();
+                  dispath(click(window.scrollY));
+                  nav(`/movies/list/${a}`);
                   nav(`/movies/list/${a}`);
                 }}
               >
@@ -181,8 +213,11 @@ function Header() {
                 멜로|드라마
               </Nav.Link>
               <Nav.Link
-                onClick={() => {
+                onClick={(event) => {
                   const a = "기타";
+                  event.preventDefault();
+                  dispath(click(window.scrollY));
+
                   nav(`/movies/list/${a}`);
                 }}
               >

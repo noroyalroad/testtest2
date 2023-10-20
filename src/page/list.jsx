@@ -9,6 +9,7 @@ import axios from "axios";
 // import { auth } from "../_actions/user_action";
 import { useDispatch } from "react-redux";
 import Auth from "../hoc/auth";
+import ScrollToTopButton from "../scrolltop/ScrolltoptoButton";
 
 // import OcheMovie from "./OchuMovie";
 
@@ -21,10 +22,11 @@ function List() {
         <NewMovie></NewMovie>
         <h5 className="cateTitle marT_20">오영추</h5>
         <Suggestion />
+        <ScrollToTopButton />
       </div>
       <Footer />
     </div>
   );
 }
 
-export default Auth(List);
+export default Auth(List, true);

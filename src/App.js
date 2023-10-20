@@ -19,10 +19,15 @@ import NicknameChange from "./view/Authentication/MyPage/NicknameChange";
 import PasswordChange from "./view/Authentication/MyPage/PasswordChange";
 import PreferenceChange from "./view/Authentication/MyPage/PreferenceChange";
 import MyPage from "./view/Authentication/MyPage";
+import Roadscroll from "./scrolltop/Roadscroll";
+import Withmovie from "./withmovie/Withmovie";
+import Newlist from "./new/Newlist";
+import Moviedetailinfo from "./detail/Moviedetailinfo";
 
 function App() {
   return (
     <BrowserRouter>
+      {/* <Roadscroll /> */}
       <Routes>
         <Route path="/list" element={<List />}></Route>
         {/* <Route path="/list/detail/:movie_id" element={<Moviedetail />}></Route> */}
@@ -30,8 +35,11 @@ function App() {
         <Route path="/title" element={<Title />}></Route>
         <Route path="/fl" element={<Fltest />}></Route>
         <Route path="/movies/list/:genres" element={<Genreslist />}></Route>
+        <Route path="/movies/list/genres/list" element={<Genreslist />}></Route>
         <Route path="/movies/list/newlsit" element={<NewMovie />}></Route>
         <Route path="/movies/list/serach" element={<Search />}></Route>
+        <Route path="/movies/detail" element={<Moviedetailinfo />}></Route>
+
         <Route path="/search/research/:search" element={<Searchlist />}></Route>
         <Route path="/login" element={<Sign />}></Route>
         <Route path="/register" element={<SignUp />}></Route>
@@ -39,6 +47,7 @@ function App() {
         <Route path="/passwordchange" element={<PasswordChange />}></Route>
         <Route path="/preferencechagne" element={<PreferenceChange />}></Route>
         <Route path="/mypage" element={<MyPage />}></Route>
+        <Route path="/withmovie" element={<Newlist />}></Route>
 
         <Route path="/detail/:movie_id" element={<Getdetail />}></Route>
       </Routes>

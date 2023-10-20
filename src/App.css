@@ -20,8 +20,12 @@ a {
   text-decoration: none;
 }
 
-.fon_bol{font-weight: bold;}
-.col_ff{color: #fff;}
+.fon_bol {
+  font-weight: bold;
+}
+.col_ff {
+  color: #fff;
+}
 
 .center-collapse {
   display: flex;
@@ -96,7 +100,9 @@ a {
   padding-left: 0;
   margin-bottom: 0;
 }
-.minhi{min-height: 70vh;}
+.minhi {
+  min-height: 70vh;
+}
 .item {
   width: 100%;
   height: 300px;
@@ -323,19 +329,23 @@ body {
   height: 100%;
 }
 /* 별점 */
-.detailedPageWrap > .movieInfo > div button {
+.detailedPageWrap > .movieInfo > div button.btn {
   width: 150px;
-  height: 50px;
   border: none;
   cursor: pointer;
   background-color: #59e2c0;
   text-align: center;
-  line-height: 50px;
+  line-height: 35px;
   border-radius: 5px;
   font-size: 16px;
   transition: 0.3s;
+  cursor: pointer;
 }
-.detailedPageWrap > .movieInfo > div button:hover {
+
+.cuP {
+  cursor: pointer;
+}
+.detailedPageWrap > .movieInfo > div button.btn:hover {
   background-color: rgb(62, 160, 98);
 }
 /* ott */
@@ -349,7 +359,7 @@ body {
   width: 100%;
   height: 100vh;
   background: rgba(0, 0, 0, 0.5);
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   justify-content: center;
@@ -465,6 +475,7 @@ body {
   cursor: pointer;
   border-radius: 5px;
   transition: background-color 0.3s;
+  z-index: 100;
 }
 .scroll-to-top:hover {
   background-color: rgba(0, 0, 0, 0.9);
@@ -661,51 +672,176 @@ body {
 }
 
 /* mypage */
-.head{width: 100%;height: 70px;display: flex;align-items: center;}
-.head > .header {width: 1240px;margin: 0 auto;}
+.head {
+  width: 100%;
+  height: 70px;
+  display: flex;
+  align-items: center;
+}
+.head > .header {
+  width: 1240px;
+  margin: 0 auto;
+}
 
+#mypage {
+  width: 1240px;
+  margin: 0 auto;
+  padding: 50px 0;
+}
 
+#mypage > .info_box {
+  width: 80%;
+  margin: 0 auto;
+}
+#mypage > .info_box h5 {
+  font-size: 40px;
+  text-align: center;
+  margin-bottom: 30px;
+}
 
-#mypage{width: 1240px;margin: 0 auto;padding: 50px 0;}
+#mypage > .info_box ul {
+  width: 70%;
+  border: 1px solid black;
+  border-radius: 10px;
+  margin: 0 auto;
+  margin-bottom: 30px;
+  padding: 0;
+}
+#mypage > .info_box ul > li:first-child {
+  width: 100%;
+  line-height: 50px;
+  border-bottom: 1px solid black;
+  padding: 0 0 0 20px;
+  box-sizing: border-box;
+  margin-bottom: 0;
+  background: #00c03f;
+  font-size: 20px;
+  font-weight: bold;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+#mypage > .info_box ul > li {
+  width: 95%;
+  border-bottom: 1px dotted black;
+  margin: 0 auto 20px;
+  box-sizing: border-box;
+  vertical-align: bottom;
+  padding: 30px 10px 0;
+}
+.fl {
+  display: flex;
+  justify-content: space-between;
+}
+.fls {
+  display: flex;
+}
+.fls p {
+  width: 50%;
+  margin: 0;
+}
+.fl p {
+  margin: 0;
+}
+.marR_30 {
+  margin-right: 30px;
+}
+#mypage > .info_box ul:last-child {
+  margin-bottom: 0;
+}
+#mypage > .info_box ul > li span {
+  font-size: 20px;
+}
 
-#mypage > .info_box{width: 80%;margin: 0 auto;}
-#mypage > .info_box h5{font-size: 40px;text-align: center;margin-bottom: 30px;}
-
-#mypage > .info_box ul{width: 70%;border: 1px solid black;border-radius: 10px;margin: 0 auto;margin-bottom: 30px;padding: 0;}
-#mypage > .info_box ul > li:first-child{width: 100%;line-height: 50px;border-bottom: 1px solid black;padding: 0 0 0 20px; box-sizing: border-box;margin-bottom: 0;background: #00c03f;font-size: 20px;font-weight: bold;border-top-left-radius: 10px;border-top-right-radius: 10px;}
-#mypage > .info_box ul > li{width: 95%;border-bottom: 1px dotted black;margin: 0 auto 20px; box-sizing: border-box;vertical-align : bottom;padding: 30px 10px 0;}
-.fl{display: flex;justify-content: space-between;}
-.fls{display: flex;}
-.fls p{width: 50%;margin: 0;}
-.fl p{margin: 0;}
-.marR_30{margin-right: 30px;}
-#mypage > .info_box ul:last-child{margin-bottom: 0;}
-#mypage > .info_box ul > li span{font-size: 20px;}
-
-#mypage button{border: 0;background: #00c03f;color: #fff;cursor: pointer;width: 100px;margin-bottom: 2px;}
-#mypage button a{width: 100%;line-height: 25px;display: block;font-size: 20px;}
+#mypage button {
+  border: 0;
+  background: #00c03f;
+  color: #fff;
+  cursor: pointer;
+  width: 100px;
+  margin-bottom: 2px;
+}
+#mypage button a {
+  width: 100%;
+  line-height: 25px;
+  display: block;
+  font-size: 20px;
+}
 
 /* 비밀번호 변경 */
-.marB_5{margin-bottom: 5px;}
-.marB_10{margin-bottom: 10px;}
-.marB_20{margin-bottom: 20px;}
-.marB_30{margin-bottom: 30px;}
-.marB_50{margin-bottom: 50px;}
+.marB_5 {
+  margin-bottom: 5px;
+}
+.marB_10 {
+  margin-bottom: 10px;
+}
+.marB_20 {
+  margin-bottom: 20px;
+}
+.marB_30 {
+  margin-bottom: 30px;
+}
+.marB_50 {
+  margin-bottom: 50px;
+}
 
-.passBoxW{width: 1240px;margin: 0 auto;padding: 160px 0;}
+.passBoxW {
+  width: 1240px;
+  margin: 0 auto;
+  padding: 160px 0;
+}
 
-.passBox{width: 50%;margin: 0 auto;padding: 30px;border: 1px solid black;}
+.passBox {
+  width: 50%;
+  margin: 0 auto;
+  padding: 30px;
+  border: 1px solid black;
+}
 
-.passBox form{display: flex;flex-wrap: wrap;height: 300px;}
-.passBox form input{width: 100%;padding-left: 10px;}
-.passBox form button{width: 100%; cursor: pointer;border: 1px solid black;background: #00c03f;font-size: 20px;}
-.passBox form button:hover{background: #017728;}
-.passBox form button:last-child{background: #fff;}
-.passBox form button:last-child:hover{background: #ededed;}
+.passBox form {
+  display: flex;
+  flex-wrap: wrap;
+  height: 300px;
+}
+.passBox form input {
+  width: 100%;
+  padding-left: 10px;
+}
+.passBox form button {
+  width: 100%;
+  cursor: pointer;
+  border: 1px solid black;
+  background: #00c03f;
+  font-size: 20px;
+}
+.passBox form button:hover {
+  background: #017728;
+}
+.passBox form button:last-child {
+  background: #fff;
+}
+.passBox form button:last-child:hover {
+  background: #ededed;
+}
 
 /* star */
-.star{display: flex;}
-.marL_10{margin-left: 10px;}
+.star {
+  display: flex;
+}
+.marL_10 {
+  margin-left: 10px;
+}
 
 /* 오영추 로그인 이용 */
-.loadBox{width: 100%;height: 300px;display: flex;justify-content: center;align-items: center;font-size: 30px;}
+.loadBox {
+  width: 100%;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+}
+
+.error-message {
+  color: red;
+  /* 또는 원하는 다른 스타일 속성을 추가하세요 */
+}

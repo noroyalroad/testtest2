@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import Genresitem from "./Genresitem";
 import Footer from "../footer/Footer";
 import Auth from "../hoc/auth";
+import ScrollToTopButton from "../scrolltop/ScrolltoptoButton";
 const Genreslist = () => {
   const { genres } = useParams();
   console.log(genres);
@@ -11,9 +12,10 @@ const Genreslist = () => {
     <div>
       <Header />
       <Genresitem gen={genres} />
+      <ScrollToTopButton />
       <Footer />
     </div>
   );
 };
 
-export default Genreslist;
+export default Auth(Genreslist, true);

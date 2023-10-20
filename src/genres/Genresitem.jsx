@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import Genresitemlist from "./Genresitemlist";
 import Loading from "../loading/Loading";
 import Auth from "../hoc/auth";
+import { useDispatch, useSelector } from "react-redux";
+import { genreslist } from "../_actions/genres_action";
 
 const Genresitem = (props) => {
   const { gen } = props;

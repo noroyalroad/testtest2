@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import Searchitem from "./Searchitem";
 import Header from "../nav/Header";
 import Footer from "../footer/Footer";
-
+import Loading from "../loading/Loading";
 
 const Searchlist = (props) => {
   const a = useParams();
@@ -20,15 +20,15 @@ const Searchlist = (props) => {
       setlist(res.data);
       setloading(false);
     });
-  }, [a]);
+  }, [a.search]);
   return (
     <div>
       <Header />
       <div className="listWrap webSize">
         <h5 className="cateTitle">{a.search}에 대한 검색결과</h5>
       </div>
-      {loading ? <h1>load...</h1> : <Searchitem item={list} />}
-      <Footer/>
+      {loading ? <Loading /> : <Searchitem item={list} />}
+      <Footer />
     </div>
   );
 };

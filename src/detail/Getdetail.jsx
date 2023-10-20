@@ -12,10 +12,13 @@ import { useSelector } from "react-redux";
 import Cookies from "js-cookie";
 import Auth from "../hoc/auth";
 import Commentlist from "../comment/Commentlist";
+import Withmovie from "../withmovie/Withmovie";
 
-const Getdetail = (props) => {
+const Getdetail = ({ onPlay }) => {
   const { movie_id } = useParams();
   const [detailmv, setdetailmv] = useState([]);
+
+  // window.location.reload();
 
   useEffect(() => {
     axios
@@ -27,7 +30,7 @@ const Getdetail = (props) => {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [movie_id]);
 
   return (
     <div>
@@ -38,7 +41,7 @@ const Getdetail = (props) => {
         {/* <CommentList2 /> */}
         <Commentlist movie_id={movie_id} />
         <h5 className="cateTitle marT_20">같이 보면 좋은 영화</h5>
-        <NewMovie />
+        <Withmovie movie_id={movie_id} />
       </div>
       <Footer />
     </div>
