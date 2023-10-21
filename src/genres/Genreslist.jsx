@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Header from "../nav/Header";
 import { useParams } from "react-router-dom";
 import Genresitem from "./Genresitem";
@@ -8,6 +8,7 @@ import ScrollToTopButton from "../scrolltop/ScrolltoptoButton";
 const Genreslist = () => {
   const { genres } = useParams();
   console.log(genres);
+
   return (
     <div>
       <Header />

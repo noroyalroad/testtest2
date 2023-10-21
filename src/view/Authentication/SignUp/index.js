@@ -155,7 +155,7 @@ export default function SignUp(props) {
       setNickNameError("닉네임을 입력해주세요.");
       return;
     } else if (!nicknameRegex.test(nickname)) {
-      setNickNameError("한글로 1글자 이상 9글자 미만으로 입력해주세요.");
+      setNickNameError("1글자 이상 9글자 미만으로 입력해주세요.");
       return;
     } else if (nextClickResponse.message === "Nickname already in use") {
       setNickNameError("중복된 닉네임입니다.");
@@ -291,18 +291,9 @@ export default function SignUp(props) {
   };
 
   return (
-    <Box
-      display="flex"
-      alignItems="center"
-      justifyContent="center"
-      minHeight="100vh" // 화면의 높이를 100vh로 설정하여 화면 중앙에 위치시킴
-    >
-      <Card sx={{ width: 500, maxWidth: 500, height: "800px", maxHeight: "800px", padding: 5 }}>
-        <Box>
-          <Typography variant="h5" sx={{ mb: 4 }}>
-            회원가입
-          </Typography>
-        </Box>
+    <div className="Wrap">
+      <div className="form-wrapper">
+        <h2>회원가입</h2>
         <Box height={"50vh"}>
           {currentStep === 1 && (
             <div>
@@ -410,9 +401,9 @@ export default function SignUp(props) {
                   {ageError}
                 </Typography>
               )}
-              <Button onClick={handleNextClick} variant="contained">
+              <a href="#" class="myButton" type="submit" onClick={handleNextClick}>
                 다음
-              </Button>
+              </a>
             </div>
           )}
           {currentStep === 2 && (
@@ -458,7 +449,7 @@ export default function SignUp(props) {
               )}
               <div>
                 {/* "포스터 보기" 버튼 */}
-                <Button onClick={openModal} variant="outlined" sx={{ mb: 10 }}>
+                <Button onClick={openModal} variant="outlined" sx={{ mb: 5 }}>
                   {isPosterVisible ? "포스터 보기" : "포스터 보기 (+)"}
                 </Button>
 
@@ -476,8 +467,11 @@ export default function SignUp(props) {
                 </Dialog>
               </div>
 
+              <Typography variant="subtitle1" fontSize="small">
+                영화 시청 우선 순위 첫번째
+              </Typography>
               <Select fullWidth variant="standard" value={preference_1} onChange={(e) => setPreference_1(e.target.value)} sx={{ mb: 6 }} disabled={!isMovieSelected}>
-                <MenuItem value="0">영화 시청 우선 순위 첫번째</MenuItem>
+                <MenuItem value="0">선택</MenuItem>
                 <MenuItem value="1" disabled={selectedPreferences.includes("1")}>
                   감독
                 </MenuItem>
@@ -493,9 +487,11 @@ export default function SignUp(props) {
                   {preference1Error}
                 </Typography>
               )}
-
+              <Typography variant="subtitle1" fontSize="small">
+                영화 시청 우선 순위 두번째
+              </Typography>
               <Select fullWidth variant="standard" value={preference_2} onChange={(e) => setPreference_2(e.target.value)} disabled={!isMovieSelected} sx={{ mb: 6 }}>
-                <MenuItem value="0">영화 시청 우선 순위 두번째</MenuItem>
+                <MenuItem value="0">선택</MenuItem>
                 <MenuItem value="1" disabled={selectedPreferences.includes("1")}>
                   감독
                 </MenuItem>
@@ -511,9 +507,11 @@ export default function SignUp(props) {
                   {preference2Error}
                 </Typography>
               )}
-
+              <Typography variant="subtitle1" fontSize="small">
+                영화 시청 우선 순위 세번째
+              </Typography>
               <Select fullWidth variant="standard" value={preference_3} onChange={(e) => setPreference_3(e.target.value)} disabled={!isMovieSelected} sx={{ mb: 5 }}>
-                <MenuItem value="0">영화 시청 우선 순위 세번째</MenuItem>
+                <MenuItem value="0">선택</MenuItem>
                 <MenuItem value="1" disabled={selectedPreferences.includes("1")}>
                   감독
                 </MenuItem>
@@ -530,24 +528,23 @@ export default function SignUp(props) {
                 </Typography>
               )}
               <Box display="flex" justifyContent="space-between">
-                <Button onClick={handlePrevClick} variant="outlined">
+                <a href="#" class="myButton" type="submit" onClick={handlePrevClick}>
                   이전
-                </Button>
-                <Button onClick={signUpHandler} variant="contained">
+                </a>
+                <a href="#" class="myButton" type="submit" onClick={signUpHandler}>
                   회원가입
-                </Button>
+                </a>
               </Box>
             </div>
           )}
         </Box>
         <Box mt="2em" display="flex" justifyContent="center" alignItems="center">
-          <Typography variant="body2" sx={{ mt: 18 }}>
+          <Typography variant="body2">
             이미 계정이 있으신가요?
             <span
               onClick={handleLoginClick}
               style={{
-                color: "blue",
-                textDecoration: "underline",
+                color: "#00c03f",
                 cursor: "pointer",
               }}
             >
@@ -555,7 +552,7 @@ export default function SignUp(props) {
             </span>
           </Typography>
         </Box>
-      </Card>
-    </Box>
+      </div>
+    </div>
   );
 }

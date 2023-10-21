@@ -1,14 +1,13 @@
 @font-face {
-  font-family: "iceSotong-Rg";
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/iceSotong-Rg.woff2") format("woff2");
+  font-family: "omyu_pretty";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-01@1.0/omyu_pretty.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
 }
-
 * {
   padding: 0;
   margin: 0;
-  font-family: "iceSotong-Rg", sans-serif;
+  font-family: "omyu_pretty";
 }
 ul,
 li,
@@ -844,4 +843,72 @@ body {
 .error-message {
   color: red;
   /* 또는 원하는 다른 스타일 속성을 추가하세요 */
+}
+
+.error-message {
+  color: red;
+}
+
+.myButton {
+  background-color: #00c03f;
+  border-radius: 10px;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: Arial;
+  font-size: 15px;
+  padding: 5px 20px;
+  text-decoration: none;
+}
+.myButton:hover {
+  background-color: #017728;
+}
+.myButton:active {
+  position: relative;
+  top: 1px;
+}
+
+/* styles.css */
+.green-text {
+  color: #00c03f;
+}
+
+/* 선호도 변경 */
+
+.preference-item {
+  display: flex;
+}
+
+.label-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* 수직 가운데 정렬 */
+  margin-bottom: 5px;
+}
+
+.label-wrapper label {
+  font-size: 18px;
+}
+
+.label-wrapper Select {
+  width: 100px;
+}
+
+.MuiMenuItem-root.Mui-selected {
+  color: #00c03f; /* 원하는 폰트 컬러로 설정합니다. */
+}
+
+.uuu {
+  width: 100%;
+  height: auto !important;
+}
+.uuu > div {
+  width: 100%;
+  justify-content: space-between;
+  display: flex;
+  margin-bottom: 80px;
+}
+.uuu button {
+  line-height: 40px !important;
+  font-size: 20px !important;
 }

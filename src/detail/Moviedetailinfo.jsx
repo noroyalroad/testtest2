@@ -21,6 +21,11 @@ const Moviedetailinfo = ({ movied }) => {
 
   const [modalopen, setModalOpen] = useState(false);
   const modalBackground = useRef();
+  // 날짜 형식 바꿔서
+  const date = new Date();
+  const year = date.getFullYear();
+  const month = date.getMonth() + 1;
+  const day = date.getDate();
 
   const user = useSelector((state) => state.user);
   let email = "";
@@ -77,6 +82,7 @@ const Moviedetailinfo = ({ movied }) => {
             <span>배우 : </span>
             <span>{movies[i].actors.slice(0, 100)}</span>
           </p>
+
           <p>
             <span>개봉일 : </span>
             <span>{movies[i].release_date}</span>

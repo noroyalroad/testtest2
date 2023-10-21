@@ -23,17 +23,18 @@ import Roadscroll from "./scrolltop/Roadscroll";
 import Withmovie from "./withmovie/Withmovie";
 import Newlist from "./new/Newlist";
 import Moviedetailinfo from "./detail/Moviedetailinfo";
+import DeleteUser from "./view/Authentication/MyPage/DeleteUser";
 
 function App() {
   return (
     <BrowserRouter>
       {/* <Roadscroll /> */}
       <Routes>
-        <Route path="/list" element={<List />}></Route>
+        <Route path="/" element={<List />}></Route>
         {/* <Route path="/list/detail/:movie_id" element={<Moviedetail />}></Route> */}
-        <Route path="/list2" element={<MovieList />}></Route>
-        <Route path="/title" element={<Title />}></Route>
-        <Route path="/fl" element={<Fltest />}></Route>
+        {/* <Route path="/list2" element={<MovieList />}></Route> */}
+        {/* <Route path="/title" element={<Title />}></Route> */}
+        {/* <Route path="/fl" element={<Fltest />}></Route> */}
         <Route path="/movies/list/:genres" element={<Genreslist />}></Route>
         <Route path="/movies/list/genres/list" element={<Genreslist />}></Route>
         <Route path="/movies/list/newlsit" element={<NewMovie />}></Route>
@@ -48,6 +49,7 @@ function App() {
         <Route path="/preferencechagne" element={<PreferenceChange />}></Route>
         <Route path="/mypage" element={<MyPage />}></Route>
         <Route path="/withmovie" element={<Newlist />}></Route>
+        <Route path="/deleteuser" element={<DeleteUser />}></Route>
 
         <Route path="/detail/:movie_id" element={<Getdetail />}></Route>
       </Routes>

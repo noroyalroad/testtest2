@@ -58,15 +58,6 @@ function CommentList2({ movie }) {
           </li>
         );
       })}
-      {/* <li>
-        <div className="comment-meta">
-          <div className="comment-nickname-date">
-            <span>김현</span> | <span>2023.10.06</span>
-          </div>
-          <button className="like-button">👍 Like</button>
-        </div>
-        <div className="comment-content">박동선 일 좀 해라!!!!🤬</div>
-      </li> */}
     </ul>
   );
 }

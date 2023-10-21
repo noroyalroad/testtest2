@@ -4,6 +4,7 @@ import Cookies from "js-cookie";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { Alert } from "react-bootstrap";
+import Footer from "../../../../footer/Footer";
 
 export default function NicknameChange(props) {
   const [nickname, setNickname] = useState("");
@@ -17,6 +18,8 @@ export default function NicknameChange(props) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    setMessage("");
 
     try {
       const token = Cookies.get("token");
@@ -39,7 +42,9 @@ export default function NicknameChange(props) {
       } else if (responseMessage === "Nickname already in use") {
         setMessage("이미 존재하는 닉네임입니다.");
       } else if (responseMessage === "Success") {
-        alert("변경이 완료되었습니다");
+        alert("변경이 완료되었습니다, 다시 로그인 해주세요.");
+        Cookies.remove("token");
+        document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
         navigate("/boardmain/MyPage");
       }
     } catch (error) {
@@ -57,11 +62,15 @@ export default function NicknameChange(props) {
       </div>
       <div className="passBoxW">
         <div className="passBox">
-          <h3>닉네임 변경</h3>
+          <h3 class="green-text">닉네임 변경</h3>
+          <h5 className="marB_30">자신을 표현할 닉네임을 변경해보세요.</h5>
+
           <form onSubmit={handleSubmit}>
-            <input className="marB_5" type="nickname" placeholder="변경할 닉네임" value={nickname} onChange={handleNicknameChange} />
+            <input className="marB_20" type="nickname" placeholder="변경할 닉네임" value={nickname} onChange={handleNicknameChange} />
             {message && <p className="error-message">{message}</p>}
-            <button class="marB_10">변경</button>
+            <button class="marB_10" type="submit">
+              변경
+            </button>
             <button
               onClick={() => {
                 navigate("/mypage");
@@ -72,6 +81,7 @@ export default function NicknameChange(props) {
           </form>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

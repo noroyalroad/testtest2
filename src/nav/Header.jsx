@@ -65,7 +65,7 @@ function Header() {
     <div>
       <Navbar bg="" expand="lg" className="webSize">
         <Container>
-          <Link to="/list">
+          <Link to="/">
             <Navbar.Brand>
               <img src="/image/logo2.png" alt="Logo" />
             </Navbar.Brand>
@@ -122,7 +122,7 @@ function Header() {
                   event.preventDefault();
                   dispath(click(window.scrollY));
 
-                  nav("/list");
+                  nav("/");
                 }}
               >
                 <FontAwesomeIcon icon={faThumbsUp} activeClassName="onActive" />

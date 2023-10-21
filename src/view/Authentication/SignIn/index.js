@@ -54,7 +54,7 @@ export default function SignIn(props) {
         const { user1 } = signInResponse;
 
         // 로그인 성공 메시지를 표시하거나 다른 동작을 수행할 수 있습니다.
-        navigate("/list"); // Redirect to the home page
+        navigate("/"); // Redirect to the home page
       } else {
         alert("로그인에 실패했습니다.");
         console.log(signInResponse);
@@ -83,10 +83,18 @@ export default function SignIn(props) {
         <form id="login-form" onSubmit={signInHandler}>
           <input type="text" name="userName" placeholder="Email" onChange={(e) => setEmail(e.target.value)} value={email} />
           <input type="password" name="userPassword" placeholder="Password" onChange={(e) => setPassword(e.target.value)} value={password} />
-          <p>
-            오영추는 처음이신가요?
-            <a onClick={handleLoginClick}>회원가입</a>
-          </p>
+          <Typography variant="body2">
+            오영추엔 처음 이신가요?
+            <span
+              onClick={handleLoginClick}
+              style={{
+                color: "#00c03f",
+                cursor: "pointer",
+              }}
+            >
+              회원가입
+            </span>
+          </Typography>
           <button type="submit" value="Login">
             Login
           </button>

@@ -33,7 +33,7 @@ function MyPage() {
       <div>
         <div className="head">
           <div className="header">
-            <Link to="/list">
+            <Link to="/">
               <img src="/image/logo2.png" alt="로고" />
             </Link>
           </div>
@@ -94,7 +94,7 @@ function MyPage() {
                   <span className="marR_30 fon_bol">회원탈퇴</span>
                 </p>
                 <button>
-                  <Link to="/preferencechagne">탈퇴하기</Link>
+                  <Link to="/deleteuser">탈퇴하기</Link>
                 </button>
               </li>
             </ul>

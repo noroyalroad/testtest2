@@ -18,7 +18,7 @@ export default function (SpecificComponent, option, adminRoute = null) {
       dispatch(auth({ headers })).then((res) => {
         if (!res.payload.isAuth) {
           if (option) alert("로그인이 필요합니다.");
-          Navigate("/list");
+          Navigate("/");
         }
       });
     }, []);

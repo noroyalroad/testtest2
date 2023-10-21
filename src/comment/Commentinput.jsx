@@ -10,6 +10,10 @@ function CommentInput({ movie_id }) {
     event.preventDefault();
 
     if (user !== undefined && user.userData !== undefined) {
+      if (comment.trim() === "") {
+        alert("댓글을 입력해주세요");
+        return;
+      }
       const body = {
         nickname: user.userData.nickname,
         comments: comment,
