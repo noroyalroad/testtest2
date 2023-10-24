@@ -2,6 +2,8 @@ import axios from "axios";
 import React, { useState } from "react";
 import Badge from "react-bootstrap/Badge";
 import ListGroup from "react-bootstrap/ListGroup";
+import { api } from "../config/api";
+
 const Commentitem = (props) => {
   const { item } = props;
   const [likes, setLikes] = useState(null);
@@ -11,7 +13,7 @@ const Commentitem = (props) => {
   const like = (id, index) => {
     console.log(id, index);
     axios
-      .post(`/api/comment/likes/${id}`)
+      .post(`${api}/api/comment/likes/${id}`)
       .then((res) => {
         console.log(res.data);
         if (res.data === "success!") {

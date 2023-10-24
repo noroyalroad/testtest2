@@ -13,6 +13,7 @@ import Cookies from "js-cookie";
 import Auth from "../hoc/auth";
 import Commentlist from "../comment/Commentlist";
 import Withmovie from "../withmovie/Withmovie";
+import { api } from "../config/api";
 
 const Getdetail = ({ onPlay }) => {
   const { movie_id } = useParams();
@@ -22,10 +23,19 @@ const Getdetail = ({ onPlay }) => {
 
   useEffect(() => {
     axios
-      .get(`/api/movie/getdetail/${movie_id}`)
+      .get(`${api}/api/movie/getdetail/${movie_id}`)
       .then((res) => {
         console.log(res.data);
         setdetailmv(res.data);
+
+        axios
+          .post(`${api}/api/addClick`, { movie_id: movie_id })
+          .then((res) => {
+            console.log(res.data);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
       })
       .catch((error) => {
         console.log(error);

@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import Searchitem from "../search/Searchitem";
 import Suggestionitem from "./Suggestionitem";
 import { useSelector } from "react-redux";
+import { api } from "../config/api";
 
 const Suggestion = () => {
   const [list, setlist] = useState([]);
@@ -17,7 +18,7 @@ const Suggestion = () => {
       };
 
       axios
-        .get("/api/movie/newsuggestion", { headers })
+        .get(`${api}/api/movie/newsuggestion`, { headers })
         .then((res) => {
           console.log(res.data);
           setlist(res.data);

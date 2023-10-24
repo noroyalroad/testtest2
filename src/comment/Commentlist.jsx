@@ -5,6 +5,7 @@ import ListGroup from "react-bootstrap/ListGroup";
 import Commentitem from "./Commentitem";
 import CommentList2 from "./CommentList2";
 import Paging from "../paging/Paging";
+import { api } from "../config/api";
 
 const Commentlist = ({ movie_id }) => {
   const [comment, setcomment] = useState([]);
@@ -13,7 +14,7 @@ const Commentlist = ({ movie_id }) => {
 
   useEffect(() => {
     axios
-      .get(`/api/comment/${movie_id}?pageNo=${page}`)
+      .get(`${api}/api/comment/${movie_id}?pageNo=${page}`)
       .then((res) => {
         console.log(res.data);
         setcomment(res.data.comment);

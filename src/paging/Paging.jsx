@@ -50,7 +50,7 @@ const Paging = ({ totalcount, onPageChagne }) => {
   }
 
   return (
-    <div>
+    <div className="pageBox">
       <Pagination>
         <Pagination.Prev onClick={handlePreviousBlockClick} disabled={currentPage <= 1} />
         {items}

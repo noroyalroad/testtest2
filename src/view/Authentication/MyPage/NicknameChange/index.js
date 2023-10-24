@@ -5,6 +5,7 @@ import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { Alert } from "react-bootstrap";
 import Footer from "../../../../footer/Footer";
+import { api } from "../../../../config/api";
 
 export default function NicknameChange(props) {
   const [nickname, setNickname] = useState("");
@@ -24,7 +25,7 @@ export default function NicknameChange(props) {
     try {
       const token = Cookies.get("token");
       const response = await axios.put(
-        "/api/users/mypage/nickname",
+        `${api}/api/users/mypage/nickname`,
         {
           nickname,
         },

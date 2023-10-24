@@ -12,15 +12,17 @@ const Genresitemlist = (props) => {
   console.log(list);
   const dispatch = useDispatch();
 
-  const clicks = useSelector((state) => state.user.clickdata);
+  // const clicks = useSelector((state) => state.user.clickdata);
 
-  useEffect(() => {
-    if (clicks !== undefined) {
-      window.scrollTo(0, clicks);
-      console.log(clicks);
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (clicks !== undefined) {
+  //     window.scrollTo(0, clicks);
+  //     console.log(clicks);
+  //   }
+  // }, [clicks]);
+
   //  페이지로 왔을 때 저장된 커서 위치로 이동
+  // 저장된 커서 위치로 이동하기
 
   return (
     <div className="listWrap webSize" id="listPage">
@@ -41,7 +43,8 @@ const Genresitemlist = (props) => {
               <a href="">
                 <img src={item.poster_path} alt="포스터" />
                 <div>
-                  <h3>{item.kr_title}</h3>
+                  <h3>{item.movie_id}</h3>
+                  {/* <h4>{item.movie_id}</h4> */}
                 </div>
               </a>
             </li>
@@ -52,4 +55,4 @@ const Genresitemlist = (props) => {
   );
 };
 
-export default Genresitemlist;
+export default React.memo(Genresitemlist);

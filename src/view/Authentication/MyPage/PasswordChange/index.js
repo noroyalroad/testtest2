@@ -3,6 +3,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 import Footer from "../../../../footer/Footer";
+import { api } from "../../../../config/api";
 
 export default function PasswordChange(props) {
   const [oldPassword, setOldPassword] = useState("");
@@ -34,7 +35,7 @@ export default function PasswordChange(props) {
     try {
       const token = Cookies.get("token");
       const response = await axios.put(
-        "/api/users/mypage/password",
+        `${api}/api/users/mypage/password`,
         {
           oldPassword,
           password,
@@ -55,7 +56,7 @@ export default function PasswordChange(props) {
         alert("변경이 완료되었습니다, 다시 로그인 해주세요.");
         Cookies.remove("token");
         document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
-        navigate("/boardmain/MyPage");
+        navigate("/mypage");
       }
     } catch (error) {
       console.error(error);

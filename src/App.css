@@ -912,3 +912,34 @@ body {
   line-height: 40px !important;
   font-size: 20px !important;
 }
+.gimin {
+  font-size: 1px;
+  color: skyblue;
+}
+
+.pageBox {
+  display: flex;
+  justify-content: center;
+}
+
+.active > .page-link,
+.page-link.active {
+  background-color: #04792b !important;
+}
+
+.loadDown {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+.loadDown button {
+  width: 20%;
+  border: 0;
+  border-radius: 20px;
+  background: #ededed;
+  line-height: 30px;
+}
+.loadDown button:hover {
+  background: #00c03f;
+  color: #fff;
+}

@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { api } from "../config/api";
 
 function CommentList2({ movie }) {
   const [likes, setlike] = useState("like");
@@ -16,7 +17,7 @@ function CommentList2({ movie }) {
     }
     console.log(id, index);
     axios
-      .post(`/api/comment/likes/${id}`)
+      .post(`${api}/api/comment/likes/${id}`)
       .then((res) => {
         console.log(res.data);
         if (res.data === "success!") {

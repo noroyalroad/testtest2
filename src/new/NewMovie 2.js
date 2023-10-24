@@ -4,6 +4,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Newlist from "./Newlist";
 import Loading from "../loading/Loading";
+import { api } from "../config/api";
 
 function NewMovie({ movie, id }) {
   const [newlist, setnewlist] = useState([]);
@@ -12,7 +13,7 @@ function NewMovie({ movie, id }) {
 
   useEffect(() => {
     axios
-      .get("/api/newList")
+      .get(`${api}/api/newList`)
       .then((res) => {
         setnewlist(res.data);
         setloda(false);

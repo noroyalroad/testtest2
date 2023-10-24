@@ -121,7 +121,6 @@ function Header() {
                 onClick={(event) => {
                   event.preventDefault();
                   dispath(click(window.scrollY));
-
                   nav("/");
                 }}
               >
@@ -133,7 +132,8 @@ function Header() {
                   const a = "액션";
                   event.preventDefault();
                   dispath(click(window.scrollY));
-                  nav(`/movies/list/${a}`);
+                  document.location.href = "/movies/list/" + a;
+                  // nav(`/movies/list/${a}`);
                 }}
               >
                 <FontAwesomeIcon icon={faHandBackFist} />
@@ -142,10 +142,11 @@ function Header() {
               <Nav.Link
                 onClick={(event) => {
                   const a = "애니메이션";
-                  event.preventDefault();
-                  dispath(click(window.scrollY));
 
-                  nav(`/movies/list/${a}`);
+                  dispath(click(window.scrollY));
+                  document.location.href = "/movies/list/" + a;
+
+                  // nav(`/movies/list/${a}`);
                 }}
               >
                 <FontAwesomeIcon icon={faFrog} />
@@ -154,10 +155,11 @@ function Header() {
               <Nav.Link
                 onClick={(event) => {
                   const a = "공포 스릴러";
-                  event.preventDefault();
-                  dispath(click(window.scrollY));
 
-                  nav(`/movies/list/${a}`);
+                  dispath(click(window.scrollY));
+                  document.location.href = "/movies/list/" + a;
+
+                  // nav(`/movies/list/${a}`);
                 }}
               >
                 <FontAwesomeIcon icon={faFaceGrimace} />
@@ -166,10 +168,11 @@ function Header() {
               <Nav.Link
                 onClick={(event) => {
                   const a = "범죄";
-                  event.preventDefault();
+
                   dispath(click(window.scrollY));
 
-                  nav(`/movies/list/${a}`);
+                  // nav(`/movies/list/${a}`);
+                  document.location.href = "/movies/list/" + a;
                 }}
               >
                 <FontAwesomeIcon icon={faGun} />
@@ -180,9 +183,8 @@ function Header() {
                   const a = "코미디";
                   event.preventDefault();
                   dispath(click(window.scrollY));
-                  nav(`/movies/list/${a}`);
-
-                  nav(`/movies/list/${a}`);
+                  // nav(`/movies/list/${a}`);
+                  document.location.href = "/movies/list/" + a;
                 }}
               >
                 <FontAwesomeIcon icon={faFaceLaugh} />
@@ -193,8 +195,8 @@ function Header() {
                   const a = "로맨스";
                   event.preventDefault();
                   dispath(click(window.scrollY));
-                  nav(`/movies/list/${a}`);
-                  nav(`/movies/list/${a}`);
+                  // nav(`/movies/list/${a}`);
+                  document.location.href = "/movies/list/" + a;
                 }}
               >
                 <FontAwesomeIcon icon={faHeart} />
@@ -205,25 +207,14 @@ function Header() {
                   const a = "멜로 드라마";
                   event.preventDefault();
                   dispath(click(window.scrollY));
-                  nav(`/movies/list/${a}`);
-                  nav(`/movies/list/${a}`);
+                  // nav(`/movies/list/${a}`);
+                  document.location.href = "/movies/list/" + a;
                 }}
               >
                 <FontAwesomeIcon icon={faTv} />
                 멜로|드라마
               </Nav.Link>
-              <Nav.Link
-                onClick={(event) => {
-                  const a = "기타";
-                  event.preventDefault();
-                  dispath(click(window.scrollY));
 
-                  nav(`/movies/list/${a}`);
-                }}
-              >
-                <FontAwesomeIcon icon={faFile} />
-                기타
-              </Nav.Link>
               <Nav.Link href="#link">
                 <FontAwesomeIcon icon={faStar} />찜
               </Nav.Link>

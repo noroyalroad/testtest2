@@ -1,4 +1,5 @@
 import { signInApi } from "../api";
+import { api } from "../config/api";
 import { AUTH_USER, LOGIN_USER } from "./types";
 
 export function loginUser(dataToSubmit) {
@@ -11,7 +12,7 @@ export function loginUser(dataToSubmit) {
 }
 
 export function auth(dataToSubmit) {
-  const req = fetch("/api/auth/user-info", dataToSubmit).then((response) => response.json());
+  const req = fetch(`${api}/api/auth/user-info`, dataToSubmit).then((response) => response.json());
 
   return {
     type: AUTH_USER,

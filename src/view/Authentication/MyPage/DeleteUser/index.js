@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Cookies from "js-cookie";
 import Footer from "../../../../footer/Footer";
+import { api } from "../../../../config/api";
 
 export default function DeleteUser() {
   const [email, setEmail] = useState("");
@@ -23,7 +24,7 @@ export default function DeleteUser() {
     try {
       const token = Cookies.get("token");
       const response = await axios.post(
-        "/api/users/mypage/deleteuser",
+        `${api}/api/users/mypage/deleteuser`,
         {
           email,
           password,

@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
+import { api } from "../config/api";
 
 function CommentInput({ movie_id }) {
   const [comment, setComment] = useState("");
@@ -21,7 +22,7 @@ function CommentInput({ movie_id }) {
       };
 
       axios
-        .post("/api/addcomment", body)
+        .post(`${api}/api/addcomment`, body)
         .then((res) => {
           console.log(res.data);
           if (res.data === "success!") {

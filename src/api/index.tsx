@@ -1,9 +1,11 @@
 import axios from "axios";
+import { api } from "../config/api";
+
 
 export const signInApi = async(data: any) => {
 
     console.log(data);
-    const response = await axios.post("/api/auth/signIn", data).catch((error)=> null);
+    const response = await axios.post(`${api}/api/auth/signIn`, data).catch((error)=> null);
     if (!response) return null;
 
     const result = response.data;
@@ -13,7 +15,7 @@ export const signInApi = async(data: any) => {
 export const signUpApi = async (data: any) => {
 
     console.log(data);
-    const response = await axios.post("/api/auth/signUp", data).catch((error)=> null);
+    const response = await axios.post(`${api}/api/auth/signUp`, data).catch((error)=> null);
 
     if (!response) return null;
 
@@ -27,7 +29,7 @@ export const signUpApi = async (data: any) => {
 export const NextClickApi = async (data: any) => {
 
     console.log(data);
-    const response = await axios.post('/api/auth/nextClick', data).catch((error)=> null);
+    const response = await axios.post(`${api}/api/auth/nextClick`, data).catch((error)=> null);
     if (!response) return null;
     const result = response.data;
     return result;
@@ -36,7 +38,7 @@ export const NextClickApi = async (data: any) => {
 
 export const GetUserInfo = async (data: any) => {
     try {
-        const response = await axios.get('/api/users/mypage', {
+        const response = await axios.get(`${api}/api/users/mypage`, {
             headers: {
                 'Authorization': `Bearer ${data}`
             }

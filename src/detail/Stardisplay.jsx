@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { FaStar } from "react-icons/fa";
+import { api } from "../config/api";
 
 function StarRating2({ rating, onStarClick, user_id, movie_id }) {
   const maxStars = 5;
@@ -19,11 +20,12 @@ function StarRating2({ rating, onStarClick, user_id, movie_id }) {
     };
 
     axios
-      .post("/api/Rating", body)
+      .post(`${api}/api/Rating`, body)
       .then((res) => {
         if (res.data) {
           console.log(res.data);
           alert("별점이 등록되었습니다.");
+          window.location.reload();
           axios
             .post("http://52.79.68.204:5001/recommend", body)
             .then((res) => {

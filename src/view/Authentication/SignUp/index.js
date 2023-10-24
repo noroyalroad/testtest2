@@ -41,7 +41,7 @@ export default function SignUp(props) {
 
   const handleLoginClick = () => {
     // 로그인 버튼 클릭 시 다른 페이지로 이동
-    navigate("/boardmain/SignIn");
+    navigate("/login");
   };
 
   useEffect(() => {

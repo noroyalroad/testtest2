@@ -8,10 +8,14 @@ function Newlist({ movie, id }) {
   const [load, setloda] = useState(true);
   const nav = useNavigate();
 
+  // useEffect(() => {
+  //   window.location.reload();
+  // });
+
   useEffect(() => {
     setnewlist(movie);
     setloda(false);
-  }, []);
+  }, [movie]);
 
   useEffect(() => {
     if (!load) {
@@ -66,7 +70,8 @@ function Newlist({ movie, id }) {
                     <li
                       key={index}
                       onClick={() => {
-                        nav(`/detail/${item.movie_id}`);
+                        // nav(`/detail/${item.movie_id}`);
+                        document.location.href = "/detail/" + item.movie_id;
                         // window.location.reload();
                       }}
                     >

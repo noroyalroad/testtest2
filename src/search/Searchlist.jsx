@@ -5,6 +5,7 @@ import Searchitem from "./Searchitem";
 import Header from "../nav/Header";
 import Footer from "../footer/Footer";
 import Loading from "../loading/Loading";
+import { api } from "../config/api";
 
 const Searchlist = (props) => {
   const a = useParams();
@@ -15,7 +16,7 @@ const Searchlist = (props) => {
   const [loading, setloading] = useState(true);
 
   useEffect(() => {
-    axios.get(`/api/movie/search/${a.search}`).then((res) => {
+    axios.get(`${api}/api/movie/search/${a.search}`).then((res) => {
       console.log(res.data);
       setlist(res.data);
       setloading(false);

@@ -5,6 +5,7 @@ import { MenuItem, Select } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { GetUserInfo } from "../../../../api";
 import Footer from "../../../../footer/Footer";
+import { api } from "../../../../config/api";
 
 export default function PreferenceChange(props) {
   const [preference_1, setPreference_1] = useState("0");
@@ -72,7 +73,7 @@ export default function PreferenceChange(props) {
     try {
       const token = Cookies.get("token");
       const response = await axios.put(
-        "/api/users/mypage/preference",
+        `${api}/api/users/mypage/preference`,
         {
           preference_1,
           preference_2,

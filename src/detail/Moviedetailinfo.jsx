@@ -27,6 +27,16 @@ const Moviedetailinfo = ({ movied }) => {
   const month = date.getMonth() + 1;
   const day = date.getDate();
 
+  const [pageReloaded, setPageReloaded] = useState(false);
+
+  // useEffect(() => {
+  //   if (!pageReloaded) {
+  //     // 페이지가 로딩될 때 자동으로 새로 고침
+  //     window.location.reload();
+  //     setPageReloaded(true); // 한 번 실행 후 플래그 설정
+  //   }
+  // }, [pageReloaded]);
+
   const user = useSelector((state) => state.user);
   let email = "";
   if (user !== undefined && user.userData !== undefined) {
